@@ -1,7 +1,6 @@
 # 📈 Time Series Anomaly Detection 
 
 This project focuses on **detecting anomalies in time series data** using a **GRU (Gated Recurrent Unit) Autoencoder**.  
-The work was developed as part of the **Knowledge Discovery and Data Mining 2** course, in collaboration with Konstantin Benischke and Pavle Savković.
 
 ---
 
@@ -34,5 +33,6 @@ Time series often contain unexpected spikes and shifts. The goal of this project
 - Artificial datasets with injected anomalies of varying lengths.
 - Realignment of shifted test sets.
 - Metrics: anomaly score distributions, reconstruction error, PATE score.
+
 
 ---
