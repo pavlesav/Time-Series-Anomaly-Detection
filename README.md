@@ -1,38 +1,66 @@
-# 📈 Time Series Anomaly Detection 
+# 📈 Time Series Anomaly Detection  
 
-This project focuses on **detecting anomalies in time series data** using a **GRU (Gated Recurrent Unit) Autoencoder**.  
+This repository explores **detecting anomalies in time series data** — sudden spikes, drops, or shifts that break expected patterns. The project combines careful **data preprocessing**, **artificial dataset generation**, and a **GRU Autoencoder** model to evaluate anomaly detection performance.  
 
 ---
 
-## 🔹 Project Overview
-Time series often contain unexpected spikes and shifts. The goal of this project is to:
-1. Generate artificial test datasets with controlled anomalies.
-2. Align and preprocess time series data (deseasonalization, differencing, scaling).
-3. Train a **GRU Autoencoder** to reconstruct normal patterns.
-4. Detect anomalies based on **reconstruction error**.
-5. Evaluate detection quality using metrics like **PATE**.
+## 🎯 Project Goals  
+- Create **artificial test datasets** with controlled anomalies and shifts.  
+- Develop preprocessing pipelines: alignment, deseasonalization, differencing, scaling.  
+- Train a model to **reconstruct normal patterns** and detect deviations.  
+- Compare anomaly detection methods using metrics like **PATE**.  
+- Reflect on what works (and what doesn’t) for robust anomaly detection.  
 
-## 🛠️ Methods & Techniques
+---
 
-### 🔧 Preprocessing
-- Dataset alignment using `scipy.correlate` for lag estimation.
-- Deseasonalization with disjoint window averaging.
-- First-order differencing:  
+## 🖼️ Project Poster  
+
+![Project Poster](Poster.png)  
+
+
+---
+
+## 🔧 Workflow  
+
+### 1. Dataset Creation  
+- Python function to generate **5 artificial test datasets**.  
+- Inserted **group anomalies** of different lengths.  
+- Applied **dataset shifts** to misalign training and test sets.  
+- Stored **true labels and shift info** for evaluation.  
+
+### 2. Preprocessing  
+- **Alignment:** used `scipy.correlate` to estimate lag and shift datasets.  
+- **Deseasonalization:** disjoint window averaging.  
+- **Detrending:** first-order differencing  
   \[
   ∇_1[x](t) = x_t - x_{t-1}
-  \]
-- Robust scaling & log normalization.
+  \]  
+- **Scaling & Normalization:** robust scaling + log transform.  
 
-### 🤖 Model: GRU Autoencoder
-- **Architecture:** 4 GRU layers `[64, 32, 32, 64]`.
-- **Regularization:** dropout, batch normalization, learning rate reduction.
-- **Training:** sequence windows, log-normalized inputs.
-- **Anomaly detection:** mean absolute reconstruction error.
+### 3. Modeling & Detection  
+- **GRU Autoencoder** with 4 layers `[64, 32, 32, 64]`.  
+- Regularization: dropout, batch normalization, learning rate reduction.  
+- Trained on window-based sequences of normalized input.  
+- **Anomaly score:** mean absolute reconstruction error.  
+- Postprocessing: dataset reshift, threshold testing, visualization.  
 
-### 📊 Evaluation
-- Artificial datasets with injected anomalies of varying lengths.
-- Realignment of shifted test sets.
-- Metrics: anomaly score distributions, reconstruction error, PATE score.
-
+### 4. Evaluation  
+- **Synthetic experiments** across thousands of datasets.  
+- **PATE metric** for anomaly detection performance.  
+- Visualization of preprocessing, anomaly predictions, and reconstruction errors.  
+- Insights:  
+  - Alignment successful (average error: 2.37 over 5000 datasets).  
+  - Threshold tuning didn’t improve PATE significantly.  
+  - Preprocessing is critical — deseasoning, scaling, and alignment strongly influence results.  
 
 ---
+
+## 📊 Key Takeaways  
+- Preprocessing is as important as the model.  
+- Visualizations help interpret anomaly patterns.  
+- Baselines are tough to beat — thresholds alone don’t add much.  
+- Stationarity and alignment make or break anomaly detection.  
+
+---
+
+Project for *Knowledge Discovery and Data Mining 2*.  
