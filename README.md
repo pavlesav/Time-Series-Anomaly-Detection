@@ -13,7 +13,7 @@ This repository explores **detecting anomalies in time series data** — sudden 
 
 ---
 
-## 🖼️ Project Poster  
+## 🖼️ Project Poster(open as pptx for the better quality)
 
 <p align="center">
   <img src="https://github.com/pavlesav/Time-Series-Anomaly-Detection/blob/main/poster.png" alt="Project Poster" width="100%">
@@ -67,4 +67,5 @@ This repository explores **detecting anomalies in time series data** — sudden 
 ---
 
 Project for *Knowledge Discovery and Data Mining 2*.  
+
 
